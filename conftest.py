@@ -32,6 +32,10 @@ def test_install_app():
     stop_app(PKG)
     clear_app(PKG)
 
+
+
+
+
     # self.android.start_app(PKG)
     # self.android.uninstall_app(PKG)
 
