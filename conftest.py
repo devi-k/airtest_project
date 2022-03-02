@@ -1,6 +1,9 @@
 ")""""Base conftest.py."""
+import logging
 from pathlib import Path
+
 import self as self
+
 from airtest.core.android import Android
 import pytest
 from airtest.core.api import *
@@ -27,15 +30,17 @@ def test_install_app():
         clear_app(PKG)
         start_app(PKG)
     yield
-    simple_report(__file__, logpath=True, logfile=str(Path().absolute().parent) + '\\log\\log.txt',
-                  output=str(Path().absolute().parent) + '\\log\\report.html')
     stop_app(PKG)
     clear_app(PKG)
+    simple_report(__file__, logpath=True, logfile=str(Path().absolute().parent) + '\\log\\log.txt',
+                  output=str(Path().absolute().parent) + '\\log\\report.html')
 
+    # h1 = LogToHtml(script_root=r'D:\test\1234.air', log_root=r"D:\test\1234.air\log", export_dir=r"D:\test\1234.air",
+    #                logfile=r'D:\test\1234.air\log\log.txt', lang='en', plugins=["poco.utils.airtest.report"])
 
-
-
-
+    # h1 = LogToHtml(script_root=str(Path().absolute().parent) + '\\testcases', log_root=str(Path().absolute().parent) + '\\log', export_dir=str(Path().absolute().parent) + '\\testcases',
+    #                logfile=str(Path().absolute().parent) + '\\log\\log.txt', lang='en', plugins=["poco.utils.airtest.report"])
+    # h1.report()
     # self.android.start_app(PKG)
     # self.android.uninstall_app(PKG)
 
