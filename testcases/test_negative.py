@@ -1,8 +1,13 @@
 from airtest.core.api import *
 
 
-def test_invalid_login(test_install_app):
-    sleep(50.0)
+def test_address_field_autopopulates(test_install_app):
+    sleep(20.0)
+    # Sampad
+    try:
+        assert_equal("Get ready for fun", "Sampad", "Checking the text exist")
+    except AssertionError:
+        log("Assertion error", timestamp=time.time(), desc="Assertion error", snapshot=True)
     wait(Template(r"newlogin.png", record_pos=(0.002, 0.888), resolution=(1080, 2340)))
     touch(Template(r"newlogin.png", record_pos=(0.002, 0.888), resolution=(1080, 2340)))
     sleep(10)
@@ -12,10 +17,57 @@ def test_invalid_login(test_install_app):
     sleep(10.0)
     text("accion")
     touch(Template(r"txtpassword.png", record_pos=(0.0, 0.098), resolution=(1440, 2560)))
-    text("Password1234", enter=False)
+    text("Password123", enter=False)
     touch(Template(r"btnloginpopup.png", record_pos=(0.244, -0.173), resolution=(1440, 2560)))
-    assert_exists(Template(r"invaliduname&pwd.png", record_pos=(0.077, 0.215), resolution=(1440, 2560)),
-                  "Verify Invalid username /Password combo text")
+    assert_exists(Template(r"homepage.png", record_pos=(0.01, 0.798), resolution=(1440, 2560)), "Verify home page")
+    sleep(10.0)
+    if exists(Template(r"welcomeback.png", record_pos=(-0.002, -0.815), resolution=(1440, 2560))):
+        sleep(2.0)
+        touch(Template(r"closewelcomeback.png", record_pos=(0.389, -0.827), resolution=(1440, 2560)))
+    if exists(Template(r"newgame.png", record_pos=(-0.002, -0.719), resolution=(1080, 2340))):
+        sleep(3.0)
+        touch(Template(r"newgameclose.png", record_pos=(0.394, -0.693), resolution=(1080, 2340)))
+    wait(Template(r"shop.png", record_pos=(-0.188, 0.984), resolution=(1080, 2340)))
+    touch(Template(r"shop.png", record_pos=(-0.188, 0.984), resolution=(1080, 2340)))
+    wait(Template(r"newdeposit5.png", record_pos=(-0.31, -0.281), resolution=(1080, 2340)))
+    touch(Template(r"newdeposit5.png", record_pos=(-0.31, -0.281), resolution=(1080, 2340)))
+    sleep(10.0)
+    if exists(Template(r"locationpopup.png", record_pos=(-0.001, 0.079), resolution=(1080, 2340))):
+        touch(Template(r"btngiveaccess.png", record_pos=(0.186, 0.231), resolution=(1080, 2340)))
+        touch(Template(r"optionallowdevicelocation.png", record_pos=(-0.006, 0.064), resolution=(1080, 2340)))
+    sleep(10.0)
+    if exists(Template(r"shopselected.png", record_pos=(-0.188, 0.984), resolution=(1080, 2340))):
+        touch(Template(r"newdeposit5.png", record_pos=(-0.31, -0.281), resolution=(1080, 2340)))
+        wait(Template(r"locationsettingspopup.png", record_pos=(-0.007, 0.061), resolution=(1080, 2340)))
+        touch(Template(r"gotosettingsbtn.png", record_pos=(0.18, 0.228), resolution=(1080, 2340)))
+        wait(Template(r"Swipeenablelocation.png", record_pos=(0.364, -0.625), resolution=(1080, 2340)))
+        touch(Template(r"Swipeenablelocation.png", record_pos=(0.364, -0.625), resolution=(1080, 2340)))
+        keyevent("BACK")
+    wait(Template(r"addresswindow.png", record_pos=(0.008, -0.026), resolution=(1440, 2560)))
+    assert_exists(Template(r"addresswindow.png", record_pos=(0.008, -0.026), resolution=(1440, 2560)),
+                  "verify enter address window exists")
+    touch(Template(r"addresstxtbx.png", record_pos=(-0.007, -0.041), resolution=(1440, 2560)))
+    sleep(10.0)
+    text("100 ", enter=False)
+    sleep(10.0)
+    assert_exists(Template(r"addressautopopulates.png", record_pos=(-0.028, -0.043), resolution=(1440, 2560)),
+                  "Verify address field auto populates")
+
+# def test_invalid_login(test_install_app):
+#     sleep(50.0)
+#     wait(Template(r"newlogin.png", record_pos=(0.002, 0.888), resolution=(1080, 2340)))
+#     touch(Template(r"newlogin.png", record_pos=(0.002, 0.888), resolution=(1080, 2340)))
+#     sleep(10)
+#     assert_exists(Template(r"loginpopup.png", record_pos=(0.003, 0.057), resolution=(1440, 2560)),
+#                   "Verify Loginpopup exists.")
+#     touch(Template(r"txtbxusername.png", record_pos=(0.0, -0.135), resolution=(1440, 2560)))
+#     sleep(10.0)
+#     text("accion")
+#     touch(Template(r"txtpassword.png", record_pos=(0.0, 0.098), resolution=(1440, 2560)))
+#     text("Password1234", enter=False)
+#     touch(Template(r"btnloginpopup.png", record_pos=(0.244, -0.173), resolution=(1440, 2560)))
+#     assert_exists(Template(r"invaliduname&pwd.png", record_pos=(0.077, 0.215), resolution=(1440, 2560)),
+#                   "Verify Invalid username /Password combo text")
 
 # def test_address_field_autopopulates_old(test_install_app):
 #
@@ -137,21 +189,3 @@ def test_invalid_login(test_install_app):
 # touch(Template(".\\images\\btnLogin.png"))
 # wait(Template(".\\images\\popupLogin.png"))
 # assert_exists(Template(".\\images\\popupLogin.png"), "verify login popup exists")
-
-
-# wait(Template(r"txtbxUsernameLogin.png", record_pos=(-0.022, -0.139), resolution=(1440, 2560)))
-# touch(Template(r"tpl1644288890150.png", record_pos=(-0.022, -0.139), resolution=(1440, 2560)))
-# wait(Template(r"tpl1644469091319.png", record_pos=(-0.002, -0.106), resolution=(1440, 2560)))
-# text("accionlabs", enter=True)
-# touch(Template(r"tpl1644288550917.png", record_pos=(0.003, 0.096), resolution=(1440, 2560)))
-# wait(Template(r"tpl1644469195863.png", record_pos=(0.001, 0.007), resolution=(1440, 2560)))
-# text("Password123", enter=False)
-# touch(Template(r"tpl1644288614104.png", record_pos=(0.244, 0.448), resolution=(1440, 2560)))
-# assert_exists(Template(r"tpl1644485252051.png", record_pos=(0.077, 0.215), resolution=(1440, 2560)),
-#               "Verify Invalid username /Password combo")
-
-# def test_second(test_install_app):
-#     sleep(30.0)
-#     wait(Template(r"tpl1644288160934.png", record_pos=(-0.385, 0.395), resolution=(1440, 2560)))
-#     touch(Template(r"tpl1644288160934.png", record_pos=(-0.385, 0.395), resolution=(1440, 2560)))
-#     exists(Template(r"tpl1644288260454.png", record_pos=(-0.002, -0.017), resolution=(1440, 2560)))

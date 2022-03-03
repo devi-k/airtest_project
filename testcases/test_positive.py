@@ -1,14 +1,15 @@
 from airtest.core.api import *
 
-def test_address_field_autopopulates(test_install_app):
-    sleep(60.0)
+
+def test_startGame(test_install_app):
+    sleep(20.0)
     wait(Template(r"newlogin.png", record_pos=(0.002, 0.888), resolution=(1080, 2340)))
     touch(Template(r"newlogin.png", record_pos=(0.002, 0.888), resolution=(1080, 2340)))
     sleep(10)
     assert_exists(Template(r"loginpopup.png", record_pos=(0.003, 0.057), resolution=(1440, 2560)),
                   "Verify Loginpopup exists.")
     touch(Template(r"txtbxusername.png", record_pos=(0.0, -0.135), resolution=(1440, 2560)))
-    sleep(10.0)
+    sleep(5.0)
     text("accion")
     touch(Template(r"txtpassword.png", record_pos=(0.0, 0.098), resolution=(1440, 2560)))
     text("Password123", enter=False)
@@ -21,28 +22,58 @@ def test_address_field_autopopulates(test_install_app):
     if exists(Template(r"newgame.png", record_pos=(-0.002, -0.719), resolution=(1080, 2340))):
         sleep(3.0)
         touch(Template(r"newgameclose.png", record_pos=(0.394, -0.693), resolution=(1080, 2340)))
-    wait(Template(r"shop.png", record_pos=(-0.188, 0.984), resolution=(1080, 2340)))
-    touch(Template(r"shop.png", record_pos=(-0.188, 0.984), resolution=(1080, 2340)))
-    wait(Template(r"newdeposit5.png", record_pos=(-0.31, -0.281), resolution=(1080, 2340)))
-    touch(Template(r"newdeposit5.png", record_pos=(-0.31, -0.281), resolution=(1080, 2340)))
     sleep(10.0)
-    if exists(Template(r"locationpopup.png", record_pos=(-0.001, 0.079), resolution=(1080, 2340))):
-        touch(Template(r"btngiveaccess.png", record_pos=(0.186, 0.231), resolution=(1080, 2340)))
-        touch(Template(r"optionallowdevicelocation.png", record_pos=(-0.006, 0.064), resolution=(1080, 2340)))
+    wait(Template(r"bingo.png", record_pos=(-0.309, 0.035), resolution=(1440, 2560)))
+    touch(Template(r"bingo.png", record_pos=(-0.319, 0.033), resolution=(1440, 2560)))
+    exists(Template(r"gameoverview.png", record_pos=(0.0, 0.05), resolution=(1440, 2560)))
+    wait(Template(r"btnPickaTournament.png", record_pos=(0.216, 0.776), resolution=(1440, 2560)))
+    touch(Template(r"btnPickaTournament.png", record_pos=(0.216, 0.776), resolution=(1440, 2560)))
+    wait(Template(r"btnPlay.png", record_pos=(0.31, 0.654), resolution=(1440, 2560)))
+    touch(Template(r"btnPlay.png", record_pos=(0.317, 0.652), resolution=(1440, 2560)))
+    wait(Template(r"findingyourapponent.png", record_pos=(0.019, 0.4), resolution=(1440, 2560)))
+    sleep(20.0)
+    touch(Template(r"btnstart.png", record_pos=(-0.004, 0.474), resolution=(1440, 2560)))
+    if exists(Template(r"howtoplay.png", record_pos=(0.067, -0.683), resolution=(1440, 2560))):
+        touch(Template(r"close.png", record_pos=(0.343, -0.685), resolution=(1440, 2560)))
+    wait(Template(r"btnstart.png", record_pos=(-0.014, 0.472), resolution=(1440, 2560)))
+    touch(Template(r"btnstart.png", record_pos=(-0.014, 0.472), resolution=(1440, 2560)))
+    # added
     sleep(10.0)
-    if exists(Template(r"shopselected.png", record_pos=(-0.188, 0.984), resolution=(1080, 2340))):
-        touch(Template(r"newdeposit5.png", record_pos=(-0.31, -0.281), resolution=(1080, 2340)))
-        wait(Template(r"locationsettingspopup.png", record_pos=(-0.007, 0.061), resolution=(1080, 2340)))
-        touch(Template(r"gotosettingsbtn.png", record_pos=(0.18, 0.228), resolution=(1080, 2340)))
-        wait(Template(r"Swipeenablelocation.png", record_pos=(0.364, -0.625), resolution=(1080, 2340)))
-        touch(Template(r"Swipeenablelocation.png", record_pos=(0.364, -0.625), resolution=(1080, 2340)))
-        keyevent("BACK")
-    wait(Template(r"addresswindow.png", record_pos=(0.008, -0.026), resolution=(1440, 2560)))
-    assert_exists(Template(r"addresswindow.png", record_pos=(0.008, -0.026), resolution=(1440, 2560)),
-                  "verify enter address window exists")
-    touch(Template(r"addresstxtbx.png", record_pos=(-0.007, -0.041), resolution=(1440, 2560)))
-    sleep(10.0)
-    text("100 ", enter=False)
-    sleep(10.0)
-    assert_exists(Template(r"addressautopopulates.png", record_pos=(-0.028, -0.043), resolution=(1440, 2560)),
-                  "Verify address field auto populates")
+    wait(Template(r"closeiconBingo.png", record_pos=(0.442, -0.844), resolution=(1440, 2560)))
+    touch(Template(r"closeiconBingo.png", record_pos=(0.442, -0.844), resolution=(1440, 2560)))
+    sleep(6.0)
+    wait(Template(r"endgamepopup.png", record_pos=(-0.002, 0.266), resolution=(1440, 2560)))
+    exists(Template(r"endgamepopup.png", record_pos=(-0.002, 0.266), resolution=(1440, 2560)))
+    touch(Template(r"btnendgame.png", record_pos=(0.442, -0.844), resolution=(1440, 2560)))
+    sleep(6.0)
+    assert_exists(Template(r"myscore.png", record_pos=(0.274, 0.529), resolution=(1440, 2560)),
+                  "Verify My score")
+
+# sleep(10.0)
+# wait(Template(r"bingo.png", record_pos=(-0.309, 0.035), resolution=(1440, 2560)))
+# touch(Template(r"bingo.png", record_pos=(-0.319, 0.033), resolution=(1440, 2560)))
+# exists(Template(r"gameoverview.png", record_pos=(0.0, 0.05), resolution=(1440, 2560)))
+# wait(Template(r"btnPickaTournament.png", record_pos=(0.216, 0.776), resolution=(1440, 2560)))
+# touch(Template(r"btnPickaTournament.png", record_pos=(0.216, 0.776), resolution=(1440, 2560)))
+# wait(Template(r"btnPlay.png", record_pos=(0.31, 0.654), resolution=(1440, 2560)))
+# touch(Template(r"btnPlay.png", record_pos=(0.317, 0.652), resolution=(1440, 2560)))
+#     # sleep(60.0)
+# wait(Template(r"findingyourapponent.png", record_pos=(0.019, 0.4), resolution=(1440, 2560)))
+# sleep(20.0)
+# touch(Template(r"btnstart.png", record_pos=(-0.004, 0.474), resolution=(1440, 2560)))
+# exists(Template(r"howtoplay.png", record_pos=(0.067, -0.683), resolution=(1440, 2560)))
+# touch(Template(r"close.png", record_pos=(0.343, -0.685), resolution=(1440, 2560)))
+# wait(Template(r"btnstart.png", record_pos=(-0.014, 0.472), resolution=(1440, 2560)))
+# touch(Template(r"btnstart.png", record_pos=(-0.014, 0.472), resolution=(1440, 2560)))
+#     # added
+# sleep(10.0)
+# wait(Template(r"closeiconBingo.png", record_pos=(0.442, -0.844), resolution=(1440, 2560)))
+# touch(Template(r"closeiconBingo.png", record_pos=(0.442, -0.844), resolution=(1440, 2560)))
+# sleep(6.0)
+# wait(Template(r"endgamepopup.png", record_pos=(-0.002, 0.266), resolution=(1440, 2560)))
+# exists(Template(r"endgamepopup.png", record_pos=(-0.002, 0.266), resolution=(1440, 2560)))
+# touch(Template(r"btnendgame.png", record_pos=(0.442, -0.844), resolution=(1440, 2560)))
+# sleep(6.0)
+# assert_exists(Template(r"myscore.png", record_pos=(0.274, 0.529), resolution=(1440, 2560)),
+#                   "Verify My score")
+
