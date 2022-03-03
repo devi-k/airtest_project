@@ -2,7 +2,7 @@ from airtest.core.api import *
 
 
 def test_address_field_autopopulates(test_install_app):
-    sleep(20.0)
+    sleep(40.0)
     # Sampad
     try:
         assert_equal("Get ready for fun", "Sampad", "Checking the text exist")

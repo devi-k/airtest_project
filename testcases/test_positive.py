@@ -2,7 +2,7 @@ from airtest.core.api import *
 
 
 def test_startGame(test_install_app):
-    sleep(20.0)
+    sleep(40.0)
     wait(Template(r"newlogin.png", record_pos=(0.002, 0.888), resolution=(1080, 2340)))
     touch(Template(r"newlogin.png", record_pos=(0.002, 0.888), resolution=(1080, 2340)))
     sleep(10)
