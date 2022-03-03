@@ -43,8 +43,8 @@ def test_address_field_autopopulates(test_install_app):
         wait(Template(r"Swipeenablelocation.png", record_pos=(0.364, -0.625), resolution=(1080, 2340)))
         touch(Template(r"Swipeenablelocation.png", record_pos=(0.364, -0.625), resolution=(1080, 2340)))
         keyevent("BACK")
-    wait(Template(r"addresswindow.png", record_pos=(0.008, -0.026), resolution=(1440, 2560)))
-    assert_exists(Template(r"addresswindow.png", record_pos=(0.008, -0.026), resolution=(1440, 2560)),
+    wait(Template(r"addresswindow.png", rgb=True, record_pos=(0.008, -0.026), resolution=(1440, 2560)))
+    assert_exists(Template(r"addresswindow.png", rgb=True, record_pos=(0.008, -0.026), resolution=(1440, 2560)),
                   "verify enter address window exists")
     touch(Template(r"addresstxtbx.png", record_pos=(-0.007, -0.041), resolution=(1440, 2560)))
     sleep(10.0)
