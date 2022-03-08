@@ -52,6 +52,17 @@ def test_address_field_autopopulates(test_install_app):
     sleep(10.0)
     assert_exists(Template(r"addressautopopulates.png", record_pos=(-0.028, -0.043), resolution=(1440, 2560)),
                   "Verify address field auto populates")
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 # def test_invalid_login(test_install_app):
 #     sleep(50.0)
@@ -189,3 +200,7 @@ def test_address_field_autopopulates(test_install_app):
 # touch(Template(".\\images\\btnLogin.png"))
 # wait(Template(".\\images\\popupLogin.png"))
 # assert_exists(Template(".\\images\\popupLogin.png"), "verify login popup exists")
+
+
+wait(Template(r"tpl1646369453476.png", record_pos=(-0.001, 0.896), resolution=(1080, 2340)),timeout=120,interval=3)
+
